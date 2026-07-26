@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppointmentTools.Controllers {
-    internal class DriveTimeLogic {
+    internal class DT_Logic {
 
         
         public async void GetDriveTimeAsync(string origin, string destination) {

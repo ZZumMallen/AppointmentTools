@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Office = Microsoft.Office.Core;
-using Dtl = AppointmentTools.Controllers.DriveTimeLogic;
+using DTC = AppointmentTools.Controllers;
 
 
 namespace AppointmentTools {
@@ -36,8 +36,9 @@ namespace AppointmentTools {
         }
 
         public void OnDriveTimeButton_Click(Office.IRibbonControl control) {
-            Dtl driveTimeLogic = new Dtl();
-            driveTimeLogic?.TestDrivetime();
+
+            DTC.DT_Logic dtLogic = new DTC.DT_Logic();
+            dtLogic?.TestDrivetime();
         }
 
         #endregion

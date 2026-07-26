@@ -192,6 +192,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\DT_InputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DT_InputForm.Designer.cs">
+      <DependentUpon>DT_InputForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -201,6 +207,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\DT_InputForm.resx">
+      <DependentUpon>DT_InputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="AppointmentTools_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -211,7 +220,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Ribbon.cs" />
-    <Compile Include="Controllers\DriveTimeLogic.cs" />
+    <Compile Include="Controllers\DT_Logic.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -226,9 +235,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Ribbon.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
