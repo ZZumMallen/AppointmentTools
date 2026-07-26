@@ -228,7 +228,8 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -261,7 +262,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Ribbon.cs" />
-    <Compile Include="Controllers\DT_Logic.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>

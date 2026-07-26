@@ -1,12 +1,71 @@
-﻿using System;
-using System.Net.Http;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using AppointmentTools.Views;
 using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+using System;
 
 namespace AppointmentTools.Controllers {
-    internal class APIController {
+
+    internal class DriveTimeResult {
+        public bool Success { get; set; }
+        public int Minutes { get; set; }
+        public string DisplayText { get; set; }   // "14 mins"
+        public bool MeetsPolicy { get; set; }
+        public string ErrorMessage { get; set; }
+    }
+
+    internal static class ApiController { // Thanks Claude!
+        private static readonly string ApiKey = ConfigController.Get("GoogleMapsApiKey");
+
+        private const int    PolicyMaxMinutes = 15;
+
+        private static readonly HttpClient Http = new HttpClient();
+
+        public static async Task<DriveTimeResult> GetAsync(string origin, string destination) {
+            var result = new DriveTimeResult();
+
+            try {
+                string url = "https://maps.googleapis.com/maps/api/distancematrix/json"
+                           + $"?origins={Uri.EscapeDataString(origin)}"
+                           + $"&destinations={Uri.EscapeDataString(destination)}"
+                           + "&mode=driving"
+                           + $"&key={ApiKey}";
+
+                string json = await Http.GetStringAsync(url);
+                JObject data = JObject.Parse(json);
+
+                // Top-level status check
+                string topStatus = data["status"]?.ToString();
+                if(topStatus != "OK") {
+                    result.Success = false;
+                    result.ErrorMessage = $"API error: {topStatus}";
+                    return result;
+                }
+
+                // Element-level status check
+                var element       = data["rows"][0]["elements"][0];
+                string elemStatus = element["status"]?.ToString();
+                if(elemStatus != "OK") {
+                    result.Success = false;
+                    result.ErrorMessage = $"Route not found ({elemStatus}). Check that both addresses are valid.";
+                    return result;
+                }
+
+                int    seconds      = element["duration"]["value"].ToObject<int>();
+                string durationText = element["duration"]["text"].ToString();
+
+                result.Success = true;
+                result.Minutes = seconds / 60;
+                result.DisplayText = durationText;
+                result.MeetsPolicy = result.Minutes <= PolicyMaxMinutes;
+            }
+            catch(Exception ex) {
+                result.Success = false;
+                result.ErrorMessage = ex.Message;
+            }
+
+            return result;
+        }
     }
 }

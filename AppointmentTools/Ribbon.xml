@@ -5,7 +5,6 @@
 		<tabSet idMso="TabSetAppointment" visible="true">
 		  <tab idMso="TabAppointment">
 			  <group id="AppointmentToolsGroup" label ="CSR Tools">
-				  <button id="MyButton" label="My Button" size="large" imageMso="HappyFace" onAction="OnMyButton_Click"/>
 				  <button id ="DriveTimeButton" label="Check Drive Time" size="large" imageMso="StartTimer" onAction="OnDriveTimeButton_Click"/>
 			  </group>
 		  </tab>

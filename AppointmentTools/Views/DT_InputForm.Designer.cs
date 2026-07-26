@@ -42,10 +42,14 @@
             // 
             // Destination_TextBox
             // 
+            this.Destination_TextBox.AcceptsTab = true;
             this.Destination_TextBox.Location = new System.Drawing.Point(61, 197);
             this.Destination_TextBox.Name = "Destination_TextBox";
             this.Destination_TextBox.Size = new System.Drawing.Size(498, 29);
             this.Destination_TextBox.TabIndex = 1;
+            this.Destination_TextBox.WordWrap = false;
+            this.Destination_TextBox.TextChanged += new System.EventHandler(this.OnDestinationTextChange);
+            this.Destination_TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnDestinationTextKeyDown);
             // 
             // Origin_Label
             // 
@@ -73,7 +77,7 @@
             this.BTN_Search.TabIndex = 4;
             this.BTN_Search.Text = "Search";
             this.BTN_Search.UseVisualStyleBackColor = true;
-            this.BTN_Search.Click += new System.EventHandler(this.BTN_Search_Click);
+            this.BTN_Search.Click += new System.EventHandler(this.OnSearchButtonClick);
             // 
             // BTN_Cancel
             // 
@@ -103,6 +107,8 @@
             this.Destination_ResultsList.Name = "Destination_ResultsList";
             this.Destination_ResultsList.Size = new System.Drawing.Size(498, 88);
             this.Destination_ResultsList.TabIndex = 7;
+            this.Destination_ResultsList.Click += new System.EventHandler(this.OnDestinationResultsList_Click);
+            this.Destination_ResultsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnDestinationText_KeyDown);
             // 
             // DT_InputForm
             // 
@@ -131,7 +137,7 @@
 
         private System.Windows.Forms.TextBox Origin_TextBox;
         private System.Windows.Forms.Label Origin_Label;
-        private System.Windows.Forms.TextBox Destination_TextBox;
+        public System.Windows.Forms.TextBox Destination_TextBox;
         private System.Windows.Forms.ListBox Destination_ResultsList;
         private System.Windows.Forms.Label Destination_Label;
         private System.Windows.Forms.Button BTN_Search;
