@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppointmentTools.Views;
 
 namespace AppointmentTools.Controllers {
     internal class DT_Logic {
@@ -35,8 +36,8 @@ namespace AppointmentTools.Controllers {
             }
 
 
-/*            // --- 3. Show input form for destination ---
-            using(var form = new InputForm(origin)) {
+            // --- 3. Show input form for destination ---
+            using(var form = new DT_InputForm(origin)) {
                 if(form.ShowDialog() != DialogResult.OK)
                     return;
 
@@ -76,7 +77,7 @@ namespace AppointmentTools.Controllers {
                     "Drive Time Result",
                     MessageBoxButtons.OK,
                     result.MeetsPolicy ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
-            }*/
+            }
         }
 
 

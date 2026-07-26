@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Office = Microsoft.Office.Core;
 using DTC = AppointmentTools.Controllers;
-
+#pragma warning disable IDE0060
 
 namespace AppointmentTools {
 
@@ -23,26 +23,22 @@ namespace AppointmentTools {
             return GetResourceText("AppointmentTools.Ribbon.xml");
         }
 
-
-        #region Ribbon Callbacks
-#pragma warning disable IDE0060 // ignore control not used
-
         public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
             this.ribbon = ribbonUI;
         }
 
-        public void OnMyButton_Click(Office.IRibbonControl control) {
-            System.Windows.Forms.MessageBox.Show("My Button clicked!");
-        }
-
-        public void OnDriveTimeButton_Click(Office.IRibbonControl control) {
+        public async void OnDriveTimeButton_Click(Office.IRibbonControl control) {
 
             DTC.DT_Logic dtLogic = new DTC.DT_Logic();
-            dtLogic?.TestDrivetime();
+            await dtLogic.GetDriveTimeAsync
         }
 
-        #endregion
-#pragma warning restore IDE0060
+        public void OnMyButton_Click(Office.IRibbonControl control) {
+            if(control is null) => throw new ArgumentNullException(nameof(control));
+        }
+
+
+
         #region Helpers
 
         private static string GetResourceText(string resourceName) {
@@ -61,5 +57,6 @@ namespace AppointmentTools {
         }
 
         #endregion
+#pragma warning restore IDE0060
     }
 }
