@@ -1,4 +1,4 @@
-﻿using AppointmentTools.Services;
+﻿using AppointmentTools.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,12 +7,14 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Office = Microsoft.Office.Core;
-using Dtl = AppointmentTools.Services.DriveTimeLogic;
+using Dtl = AppointmentTools.Controllers.DriveTimeLogic;
 
-#pragma warning disable IDE0060 // ignore control not used
+
 namespace AppointmentTools {
+
     [ComVisible(true)]
     public class Ribbon : Office.IRibbonExtensibility {
+
         private Office.IRibbonUI ribbon;
 
         public Ribbon() { }
@@ -23,6 +25,7 @@ namespace AppointmentTools {
 
 
         #region Ribbon Callbacks
+#pragma warning disable IDE0060 // ignore control not used
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
             this.ribbon = ribbonUI;
@@ -38,7 +41,7 @@ namespace AppointmentTools {
         }
 
         #endregion
-
+#pragma warning restore IDE0060
         #region Helpers
 
         private static string GetResourceText(string resourceName) {
@@ -59,4 +62,3 @@ namespace AppointmentTools {
         #endregion
     }
 }
-#pragma warning restore IDE0060

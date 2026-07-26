@@ -6,11 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AppointmentTools.Services {
+namespace AppointmentTools.Controllers {
     internal class DriveTimeLogic {
 
         
-
         public async void GetDriveTimeAsync(string origin, string destination) {
             AppointmentItem appointment = GetActiveAppointment();
 
