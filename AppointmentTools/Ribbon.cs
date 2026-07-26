@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
-using InputForm = AppointmentTools.Views.DT_InputForm;
+using InputForm = AppointmentTools.Views.InputForm;
 
 #pragma warning disable IDE0060
 

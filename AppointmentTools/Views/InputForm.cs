@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 
 namespace AppointmentTools.Views {
-    public partial class DT_InputForm : Form {
+    public partial class InputForm : Form {
 
         #region Fields
         public string DestinationAddress => Destination_TextBox.Text.Trim();        
@@ -27,7 +27,7 @@ namespace AppointmentTools.Views {
 
         #endregion Fields
 
-        public DT_InputForm(string appointmentLocation) {
+        public InputForm(string appointmentLocation) {
             InitializeComponent();
             Origin_TextBox.Text = appointmentLocation;
 

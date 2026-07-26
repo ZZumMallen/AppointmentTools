@@ -1,5 +1,5 @@
 ﻿namespace AppointmentTools.Views {
-    partial class DT_InputForm {
+    partial class InputForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -110,7 +110,7 @@
             this.Destination_ResultsList.Click += new System.EventHandler(this.OnDestinationResultsList_Click);
             this.Destination_ResultsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnDestinationText_KeyDown);
             // 
-            // DT_InputForm
+            // InputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.Origin_TextBox);
             this.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "DT_InputForm";
+            this.Name = "InputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Check Drive Time";
             this.ResumeLayout(false);

@@ -235,11 +235,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\DT_InputForm.cs">
+    <Compile Include="Views\InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DT_InputForm.Designer.cs">
-      <DependentUpon>DT_InputForm.cs</DependentUpon>
+    <Compile Include="Views\InputForm.Designer.cs">
+      <DependentUpon>InputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ResultsForm.cs">
       <SubType>Form</SubType>
@@ -256,8 +256,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\DT_InputForm.resx">
-      <DependentUpon>DT_InputForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\InputForm.resx">
+      <DependentUpon>InputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ResultsForm.resx">
       <DependentUpon>ResultsForm.cs</DependentUpon>
