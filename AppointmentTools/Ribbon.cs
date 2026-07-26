@@ -9,14 +9,13 @@ using System.Text;
 using Office = Microsoft.Office.Core;
 using Dtl = AppointmentTools.Services.DriveTimeLogic;
 
-
+#pragma warning disable IDE0060 // ignore control not used
 namespace AppointmentTools {
     [ComVisible(true)]
     public class Ribbon : Office.IRibbonExtensibility {
         private Office.IRibbonUI ribbon;
 
-        public Ribbon() {
-        }
+        public Ribbon() { }
 
         public string GetCustomUI(string ribbonID) {
             return GetResourceText("AppointmentTools.Ribbon.xml");
@@ -24,8 +23,6 @@ namespace AppointmentTools {
 
 
         #region Ribbon Callbacks
-        #pragma warning disable IDE0060 // ignore control not used
-
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
             this.ribbon = ribbonUI;
@@ -39,8 +36,6 @@ namespace AppointmentTools {
             Dtl driveTimeLogic = new Dtl();
             driveTimeLogic?.TestDrivetime();
         }
-
-        #pragma warning restore IDE0060
 
         #endregion
 
@@ -64,3 +59,4 @@ namespace AppointmentTools {
         #endregion
     }
 }
+#pragma warning restore IDE0060

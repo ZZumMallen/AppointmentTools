@@ -25,7 +25,7 @@ namespace AppointmentTools.Services {
             }
 
             origin = appointment.Location?.Trim();
-/*            if(string.IsNullOrEmpty(origin)) {
+            if(string.IsNullOrEmpty(origin)) {
                 MessageBox.Show(
                     "The selected appointment has no Location field set.\n\n" +
                     "Please add an address to the appointment's Location field and try again.",
@@ -36,7 +36,7 @@ namespace AppointmentTools.Services {
             }
 
 
-            // --- 3. Show input form for destination ---
+/*            // --- 3. Show input form for destination ---
             using(var form = new InputForm(origin)) {
                 if(form.ShowDialog() != DialogResult.OK)
                     return;
@@ -80,13 +80,7 @@ namespace AppointmentTools.Services {
             }*/
         }
 
-        public void TestDrivetime() {
-            MessageBox.Show("Test Drive Time Logic",
-                "Test",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
-            return;
-        }
+
 
 
 
@@ -105,6 +99,14 @@ namespace AppointmentTools.Services {
             }
             return appointment;
         }
-    
+
+        public void TestDrivetime() {
+            MessageBox.Show("Test Drive Time Logic",
+                "Test",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            return;
+        }
+
     }
 }
