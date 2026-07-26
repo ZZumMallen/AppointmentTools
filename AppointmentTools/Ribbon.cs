@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppointmentTools.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,24 +7,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Office = Microsoft.Office.Core;
-
-// TODO:  Follow these steps to enable the Ribbon (XML) item:
-
-// 1: Copy the following code block into the ThisAddin, ThisWorkbook, or ThisDocument class.
-
-//  protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
-//  {
-//      return new Ribbon();
-//  }
-
-// 2. Create callback methods in the "Ribbon Callbacks" region of this class to handle user
-//    actions, such as clicking a button. Note: if you have exported this Ribbon from the Ribbon designer,
-//    move your code from the event handlers to the callback methods and modify the code to work with the
-//    Ribbon extensibility (RibbonX) programming model.
-
-// 3. Assign attributes to the control tags in the Ribbon XML file to identify the appropriate callback methods in your code.  
-
-// For more information, see the Ribbon XML documentation in the Visual Studio Tools for Office Help.
+using Dtl = AppointmentTools.Services.DriveTimeLogic;
 
 
 namespace AppointmentTools {
@@ -34,20 +18,29 @@ namespace AppointmentTools {
         public Ribbon() {
         }
 
-        #region IRibbonExtensibility Members
-
         public string GetCustomUI(string ribbonID) {
             return GetResourceText("AppointmentTools.Ribbon.xml");
         }
 
-        #endregion
 
         #region Ribbon Callbacks
-        //Create callback methods here. For more information about adding callback methods, visit https://go.microsoft.com/fwlink/?LinkID=271226
+        #pragma warning disable IDE0060 // ignore control not used
+
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
             this.ribbon = ribbonUI;
         }
+
+        public void OnMyButton_Click(Office.IRibbonControl control) {
+            System.Windows.Forms.MessageBox.Show("My Button clicked!");
+        }
+
+        public void OnDriveTimeButton_Click(Office.IRibbonControl control) {
+            Dtl driveTimeLogic = new Dtl();
+            driveTimeLogic?.TestDrivetime();
+        }
+
+        #pragma warning restore IDE0060
 
         #endregion
 
