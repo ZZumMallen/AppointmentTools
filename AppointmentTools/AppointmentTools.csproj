@@ -21,7 +21,7 @@
     <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{641A1F39-3F0A-4E5C-BAD4-32E63FECF652}</ProjectGuid>
+    <ProjectGuid>{0F04CC8F-ACCA-0CC0-43B5-E81727A52AF3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>AppointmentTools</RootNamespace>
