@@ -26,8 +26,6 @@ namespace AppointmentTools.Views {
             }
         }
 
-
-
         private void Button_Ok_Click(object sender, EventArgs e) {
             this.Close();
         }
