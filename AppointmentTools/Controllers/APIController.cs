@@ -16,7 +16,8 @@ namespace AppointmentTools.Controllers {
     }
 
     internal static class ApiController { // Thanks Claude!
-        private static readonly string ApiKey = ConfigController.Get("GoogleMapsApiKey");
+        //private static readonly string ApiKey = ConfigController.Get("GoogleMapsApiKey");
+        private static readonly string ApiKey = ConfigController.GetKey();
 
         private const int    PolicyMaxMinutes = 15;
 

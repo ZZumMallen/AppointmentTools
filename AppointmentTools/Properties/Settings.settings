@@ -5,5 +5,14 @@
     <Setting Name="CurrentKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">AIzaSyAW_DRZU9uXOZud2w3LUsFBC0F9s_cvqgA</Value>
     </Setting>
+    <Setting Name="TestKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ThisIsNotarealket987987987987987989</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CHUNKER</Value>
+    </Setting>
+    <Setting Name="Setting1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

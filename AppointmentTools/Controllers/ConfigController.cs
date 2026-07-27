@@ -19,20 +19,27 @@ namespace AppointmentTools.Controllers {
     internal class ConfigController {
         private const string FallbackApiKey = "AIzaSyAW_DRZU9uXOZud2w3LUsFBC0F9s_cvqgA";
 
-
-        public static string ShowApi() {
-            return Settings.Default.CurrentKey;
+        public static string GetKey() {
+            try {
+                string myKey = Settings.Default.CurrentKey;
+                return myKey;
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+                return FallbackApiKey;
+            }
         }
 
-        public static string GetKey() {
-            string myKey = Settings.Default.CurrentKey;
+        public void UpdateKey(string newValue) {
+            string oldValue = Settings.Default.CurrentKey;
+            Settings.Default.CurrentKey = newValue;
 
-            if (string.IsNullOrEmpty(myKey)) {
-                MessageBox.Show("myKey is null or empty, falling back");
-                myKey = FallbackApiKey;
-            }
+            MessageBox.Show($"key {oldValue} has been replaced with key: {newValue}");
 
-            return myKey;
+        }
+
+        public void ResetKeyToFallback() {
+            Settings.Default.CurrentKey = FallbackApiKey;
         }
 
         public static string Get(string key) {
