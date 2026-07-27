@@ -14,12 +14,9 @@ namespace AppointmentTools.Controllers {
     internal class ConfigController {
         private const string FallbackApiKey = "AIzaSyAW_DRZU9uXOZud2w3LUsFBC0F9s_cvqgA";
 
-        //private static readonly Configuration Config;
+        private static readonly Configuration Config;
 
-        //static ConfigHelper() {
-        //    var uri = new Uri(Assembly.GetExecutingAssembly().CodeBase);
-        //    Config = ConfigurationManager.OpenExeConfiguration(uri.LocalPath);
-        //}
+        
 
         public static string Get(string key) {
             return FallbackApiKey;
