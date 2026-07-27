@@ -104,6 +104,13 @@ namespace AppointmentTools {
             }
         }
 
+        public void OnSettingsButton_Click(Office.IRibbonControl control) {
+            string message = ConfigController.GetKey();
+
+            MessageBox.Show(message);
+            
+        }
+
         #endregion Ribbon Callbacks
 
         #region Helpers
