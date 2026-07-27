@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using InputForm = AppointmentTools.Views.InputForm;
+using Microsoft.Office.Core;
 
 #pragma warning disable IDE0060
 
@@ -24,9 +25,17 @@ namespace AppointmentTools {
 
         #region IRibbonExtensibility Members
 
+        /*        public string GetCustomUI(string ribbonID) {
+                    return GetResourceText("AppointmentTools.Ribbon.xml");
+                }*/
+
         public string GetCustomUI(string ribbonID) {
-            return GetResourceText("AppointmentTools.Ribbon.xml");
+            if(ribbonID == "Microsoft.Outlook.Explorer") {
+                return GetResourceText("AppointmentTools.Ribbon.xml");
+            }
+            return null;
         }
+
         #endregion
 
         #region Ribbon Callbacks

@@ -295,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\close.png" />
+    <Content Include="Resources\my_location.png" />
     <Content Include="Resources\racing-flag.ico" />
     <Content Include="Resources\racing-flag.png" />
   </ItemGroup>
