@@ -17,6 +17,7 @@ namespace AppointmentTools.Views {
     public partial class InputForm : Form {
 
         #region Fields
+
         public string DestinationAddress => Destination_TextBox.Text.Trim();        
         private static readonly HttpClient Http = new HttpClient();
         private static readonly string ApiKey = ConfigController.Get("GoogleMapsApiKey");
@@ -40,8 +41,10 @@ namespace AppointmentTools.Views {
             };
         }
 
-        private void OnSearchButtonClick(object sender, EventArgs e) {
-            if(Destination_ResultsList.Visible && Destination_ResultsList.SelectedIndex >= 0) {
+        #region Callbacks
+
+        private void OnSearchButton_Click(object sender, EventArgs e) {
+            if(Results_List.Visible && Results_List.SelectedIndex >= 0) {
                 SelectSuggestion();
                 return;
             }
@@ -49,11 +52,11 @@ namespace AppointmentTools.Views {
             this.Close();
         }
 
-        private void BTN_Cancel_Click(object sender, EventArgs e) {
+        private void OnCancelButton_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void BTN_Paste_Click(object sender, EventArgs e) {
+        private void OnPasteButton_Click(object sender, EventArgs e) {
             if(Clipboard.ContainsText()) {
                 _suppressTextChanged = true;
                 Destination_TextBox.Text = Clipboard.GetText().Trim();
@@ -66,7 +69,20 @@ namespace AppointmentTools.Views {
             }
         }
 
-        private void OnDestinationTextChange(object sender, EventArgs e) {
+        private void OnDestinationText_KeyDown(object sender, KeyEventArgs e) {
+            if(e.KeyCode == Keys.Enter) {
+                SelectSuggestion();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            else if(e.KeyCode == Keys.Escape) {
+                HideSuggestions();
+                Results_List.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void OnDestinationText_TextChanged(object sender, EventArgs e) {
             if(_suppressTextChanged)
                 return;
 
@@ -80,10 +96,52 @@ namespace AppointmentTools.Views {
             _debounceTimer.Start();
         }
 
+        private void OnResults_KeyDown(object sender, KeyEventArgs e) {
+            if(!Results_List.Visible)
+                return;
+
+            switch(e.KeyCode) {
+                case Keys.Down:
+                    Results_List.SelectedIndex =
+                        (Results_List.SelectedIndex < Results_List.Items.Count - 1)
+                            ? Results_List.SelectedIndex + 1
+                            : 0;
+                    e.Handled = true;
+                    break;
+
+                case Keys.Up:
+                    if(Results_List.SelectedIndex > 0)
+                        Results_List.SelectedIndex--;
+                    e.Handled = true;
+                    break;
+
+                case Keys.Enter:
+                    if(Results_List.SelectedIndex >= 0) {
+                        SelectSuggestion();
+                        e.Handled = true;
+                        e.SuppressKeyPress = true;   // stops the default OK-button beep
+                    }
+                    break;
+
+                case Keys.Escape:
+                    HideSuggestions();
+                    e.Handled = true;
+                    break;
+            }
+        }
+
+        private void OnResults_Click(object sender, EventArgs e) {
+            SelectSuggestion();
+        }
+
         private async void OnDebounceTimerTick(object sender, EventArgs e) {
             _debounceTimer.Stop();
             await FetchSuggestionsAsync(Destination_TextBox.Text.Trim());
         }
+
+        #endregion Callbacks
+
+        #region Helper Methods
 
         private async Task FetchSuggestionsAsync(string input) {
 
@@ -128,89 +186,41 @@ namespace AppointmentTools.Views {
         }
 
         private void ShowSuggestions(List<string> items) {
-            Destination_ResultsList.Items.Clear();
+            Results_List.Items.Clear();
             foreach(var item in items)
-                Destination_ResultsList.Items.Add(item);
+                Results_List.Items.Add(item);
 
             int rows       = Math.Min(items.Count, MaxVisibleSuggestions);
             int listHeight = rows * SuggestionItemHeight + 4;
 
-            Destination_ResultsList.Height = listHeight;
-            Destination_ResultsList.Visible = true;
-            Destination_ResultsList.BringToFront();
+            Results_List.Height = listHeight;
+            Results_List.Visible = true;
+            Results_List.BringToFront();
         }
 
         private void HideSuggestions() {
-            if(!Destination_ResultsList.Visible)
+            if(!Results_List.Visible)
                 return;
 
-            Destination_ResultsList.Visible = false;
-            Destination_ResultsList.Items.Clear();
-            Destination_ResultsList.Height = 0;
+            Results_List.Visible = false;
+            Results_List.Items.Clear();
+            Results_List.Height = 0;
         }
 
         private void SelectSuggestion() {
-            if(Destination_ResultsList.SelectedItem == null)
+            if(Results_List.SelectedItem == null)
                 return;
 
             _suppressTextChanged = true;
-            Destination_TextBox.Text = Destination_ResultsList.SelectedItem.ToString();
+            Destination_TextBox.Text = Results_List.SelectedItem.ToString();
             Destination_TextBox.SelectionStart = Destination_TextBox.Text.Length;
             _suppressTextChanged = false;
 
-            HideSuggestions();
+            //HideSuggestions();
             Destination_TextBox.Focus();
         }
 
-        private void OnDestinationTextKeyDown(object sender, KeyEventArgs e) {
-            if(!Destination_ResultsList.Visible)
-                return;
+        #endregion Helper Methods
 
-            switch(e.KeyCode) {
-                case Keys.Down:
-                    Destination_ResultsList.SelectedIndex =
-                        (Destination_ResultsList.SelectedIndex < Destination_ResultsList.Items.Count - 1)
-                            ? Destination_ResultsList.SelectedIndex + 1
-                            : 0;
-                    e.Handled = true;
-                    break;
-
-                case Keys.Up:
-                    if(Destination_ResultsList.SelectedIndex > 0)
-                        Destination_ResultsList.SelectedIndex--;
-                    e.Handled = true;
-                    break;
-
-                case Keys.Enter:
-                    if(Destination_ResultsList.SelectedIndex >= 0) {
-                        SelectSuggestion();
-                        e.Handled = true;
-                        e.SuppressKeyPress = true;   // stops the default OK-button beep
-                    }
-                    break;
-
-                case Keys.Escape:
-                    HideSuggestions();
-                    e.Handled = true;
-                    break;
-            }
-        }
-
-        private void OnDestinationText_KeyDown(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Enter) {
-                SelectSuggestion();
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-            else if(e.KeyCode == Keys.Escape) {
-                HideSuggestions();
-                Destination_ResultsList.Focus();
-                e.Handled = true;
-            }
-        }
-
-        private void OnDestinationResultsList_Click(object sender, EventArgs e) {
-            SelectSuggestion();
-        }
     }
 }

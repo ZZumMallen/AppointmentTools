@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResultsForm));
             this.Button_Ok = new System.Windows.Forms.Button();
             this.Label_HeaderFrom = new System.Windows.Forms.Label();
             this.Label_HeaderTo = new System.Windows.Forms.Label();
@@ -32,7 +33,7 @@
             // 
             // Button_Ok
             // 
-            this.Button_Ok.Location = new System.Drawing.Point(378, 174);
+            this.Button_Ok.Location = new System.Drawing.Point(186, 161);
             this.Button_Ok.Name = "Button_Ok";
             this.Button_Ok.Size = new System.Drawing.Size(75, 44);
             this.Button_Ok.TabIndex = 3;
@@ -44,53 +45,58 @@
             // 
             this.Label_HeaderFrom.BackColor = System.Drawing.Color.Transparent;
             this.Label_HeaderFrom.Font = new System.Drawing.Font("Segoe UI Variable Display", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_HeaderFrom.Location = new System.Drawing.Point(30, 30);
+            this.Label_HeaderFrom.Location = new System.Drawing.Point(12, 16);
             this.Label_HeaderFrom.Name = "Label_HeaderFrom";
             this.Label_HeaderFrom.Size = new System.Drawing.Size(423, 21);
             this.Label_HeaderFrom.TabIndex = 5;
             this.Label_HeaderFrom.Text = "From:";
+            this.Label_HeaderFrom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label_HeaderTo
             // 
             this.Label_HeaderTo.BackColor = System.Drawing.Color.Transparent;
             this.Label_HeaderTo.Font = new System.Drawing.Font("Segoe UI Variable Display", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_HeaderTo.Location = new System.Drawing.Point(30, 64);
+            this.Label_HeaderTo.Location = new System.Drawing.Point(12, 50);
             this.Label_HeaderTo.Name = "Label_HeaderTo";
             this.Label_HeaderTo.Size = new System.Drawing.Size(423, 21);
             this.Label_HeaderTo.TabIndex = 6;
             this.Label_HeaderTo.Text = "To:";
+            this.Label_HeaderTo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label_HeaderTime
             // 
             this.Label_HeaderTime.BackColor = System.Drawing.Color.Transparent;
             this.Label_HeaderTime.Font = new System.Drawing.Font("Segoe UI Variable Display", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_HeaderTime.Location = new System.Drawing.Point(30, 97);
+            this.Label_HeaderTime.Location = new System.Drawing.Point(12, 84);
             this.Label_HeaderTime.Name = "Label_HeaderTime";
             this.Label_HeaderTime.Size = new System.Drawing.Size(423, 21);
             this.Label_HeaderTime.TabIndex = 7;
             this.Label_HeaderTime.Text = "Time:";
+            this.Label_HeaderTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label_PolicyLine
             // 
-            this.Label_PolicyLine.BackColor = System.Drawing.Color.Transparent;
-            this.Label_PolicyLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label_PolicyLine.Location = new System.Drawing.Point(30, 130);
-            this.Label_PolicyLine.MinimumSize = new System.Drawing.Size(300, 0);
+            this.Label_PolicyLine.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Label_PolicyLine.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_PolicyLine.Location = new System.Drawing.Point(12, 118);
+            this.Label_PolicyLine.MinimumSize = new System.Drawing.Size(300, 2);
             this.Label_PolicyLine.Name = "Label_PolicyLine";
             this.Label_PolicyLine.Size = new System.Drawing.Size(423, 30);
             this.Label_PolicyLine.TabIndex = 8;
+            this.Label_PolicyLine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ResultsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 238);
+            this.ClientSize = new System.Drawing.Size(453, 219);
             this.Controls.Add(this.Label_PolicyLine);
             this.Controls.Add(this.Label_HeaderTime);
             this.Controls.Add(this.Label_HeaderTo);
             this.Controls.Add(this.Button_Ok);
             this.Controls.Add(this.Label_HeaderFrom);
             this.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ResultsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
