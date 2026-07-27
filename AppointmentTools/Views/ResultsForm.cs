@@ -16,13 +16,16 @@ namespace AppointmentTools.Views {
             Label_HeaderFrom.Text = $"From: {from}";
             Label_HeaderTo.Text = $"To: {to}";
             Label_HeaderTime.Text = $"Time: {driveTime}";            
-            Label_PolicyLine.Text = policyLine;            
+            Label_PolicyLine.Text = policyLine;
 
             if(meetsPolicyStandard) {
                 Label_PolicyLine.BackColor = Color.Green;
+                Label_PolicyLine.ForeColor = Color.White;
+
             }
             else {
                 Label_PolicyLine.BackColor = Color.Red;
+                Label_PolicyLine.ForeColor = Color.White;
             }
         }
 

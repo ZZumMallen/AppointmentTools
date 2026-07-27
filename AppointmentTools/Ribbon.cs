@@ -94,8 +94,8 @@ namespace AppointmentTools {
                 bool meetsPolicyStandard = result.MeetsPolicy;
 
                 string policyLine = result.MeetsPolicy
-                        ? $"✔  Meets policy  (≤ 15 min)"
-                        : $"✘  Exceeds policy  (> 15 min) — find a different slot.";
+                        ? $"Meets policy  (≤ 15 min)"
+                        : $"Exceeds policy  (> 15 min) — find a different slot.";
 
                 using(var resultsForm = new ResultsForm(origin, destinationText, result.DisplayText, policyLine, meetsPolicyStandard)) {
                     if(resultsForm.ShowDialog() != DialogResult.OK)

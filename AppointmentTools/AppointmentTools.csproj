@@ -292,6 +292,7 @@
     <None Include="Resources\paste.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\close.png" />
     <Content Include="Resources\racing-flag.ico" />
     <Content Include="Resources\racing-flag.png" />
   </ItemGroup>

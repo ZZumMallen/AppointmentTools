@@ -30,15 +30,16 @@
             this.Destination_Label = new System.Windows.Forms.Label();
             this.BTN_Search = new System.Windows.Forms.Button();
             this.BTN_Cancel = new System.Windows.Forms.Button();
-            this.BTN_Paste = new System.Windows.Forms.Button();
             this.Results_List = new System.Windows.Forms.ListBox();
+            this.BTN_Paste = new System.Windows.Forms.Button();
+            this.BTN_X = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Origin_TextBox
             // 
-            this.Origin_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.Origin_TextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Origin_TextBox.Location = new System.Drawing.Point(12, 35);
+            this.Origin_TextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.Origin_TextBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.Origin_TextBox.Location = new System.Drawing.Point(22, 35);
             this.Origin_TextBox.MaxLength = 500;
             this.Origin_TextBox.Name = "Origin_TextBox";
             this.Origin_TextBox.ReadOnly = true;
@@ -49,11 +50,14 @@
             // 
             // Destination_TextBox
             // 
+            this.Destination_TextBox.AcceptsReturn = true;
             this.Destination_TextBox.AcceptsTab = true;
-            this.Destination_TextBox.Location = new System.Drawing.Point(12, 103);
+            this.Destination_TextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.Destination_TextBox.Location = new System.Drawing.Point(22, 103);
             this.Destination_TextBox.Name = "Destination_TextBox";
             this.Destination_TextBox.Size = new System.Drawing.Size(417, 29);
             this.Destination_TextBox.TabIndex = 0;
+            this.Destination_TextBox.Text = "Paste address here";
             this.Destination_TextBox.WordWrap = false;
             this.Destination_TextBox.TextChanged += new System.EventHandler(this.OnDestinationText_TextChanged);
             this.Destination_TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnDestinationText_KeyDown);
@@ -61,26 +65,26 @@
             // Origin_Label
             // 
             this.Origin_Label.AutoSize = true;
-            this.Origin_Label.Font = new System.Drawing.Font("Segoe UI Variable Text", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Origin_Label.Location = new System.Drawing.Point(13, 17);
+            this.Origin_Label.Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            this.Origin_Label.Location = new System.Drawing.Point(23, 17);
             this.Origin_Label.Name = "Origin_Label";
-            this.Origin_Label.Size = new System.Drawing.Size(37, 15);
+            this.Origin_Label.Size = new System.Drawing.Size(115, 19);
             this.Origin_Label.TabIndex = 4;
-            this.Origin_Label.Text = "Origin";
+            this.Origin_Label.Text = "Selected Address:";
             // 
             // Destination_Label
             // 
             this.Destination_Label.AutoSize = true;
-            this.Destination_Label.Font = new System.Drawing.Font("Segoe UI Variable Text", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Destination_Label.Location = new System.Drawing.Point(13, 84);
+            this.Destination_Label.Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            this.Destination_Label.Location = new System.Drawing.Point(23, 84);
             this.Destination_Label.Name = "Destination_Label";
-            this.Destination_Label.Size = new System.Drawing.Size(64, 15);
+            this.Destination_Label.Size = new System.Drawing.Size(119, 19);
             this.Destination_Label.TabIndex = 6;
-            this.Destination_Label.Text = "Destination";
+            this.Destination_Label.Text = "Address to Check:";
             // 
             // BTN_Search
             // 
-            this.BTN_Search.Location = new System.Drawing.Point(354, 161);
+            this.BTN_Search.Location = new System.Drawing.Point(364, 161);
             this.BTN_Search.Name = "BTN_Search";
             this.BTN_Search.Size = new System.Drawing.Size(75, 44);
             this.BTN_Search.TabIndex = 2;
@@ -90,7 +94,7 @@
             // 
             // BTN_Cancel
             // 
-            this.BTN_Cancel.Location = new System.Drawing.Point(273, 161);
+            this.BTN_Cancel.Location = new System.Drawing.Point(283, 161);
             this.BTN_Cancel.Name = "BTN_Cancel";
             this.BTN_Cancel.Size = new System.Drawing.Size(75, 44);
             this.BTN_Cancel.TabIndex = 3;
@@ -98,11 +102,24 @@
             this.BTN_Cancel.UseVisualStyleBackColor = true;
             this.BTN_Cancel.Click += new System.EventHandler(this.OnCancelButton_Click);
             // 
+            // Results_List
+            // 
+            this.Results_List.FormattingEnabled = true;
+            this.Results_List.ItemHeight = 21;
+            this.Results_List.Location = new System.Drawing.Point(22, 138);
+            this.Results_List.Name = "Results_List";
+            this.Results_List.Size = new System.Drawing.Size(416, 67);
+            this.Results_List.TabIndex = 1;
+            this.Results_List.Visible = false;
+            this.Results_List.Click += new System.EventHandler(this.OnResults_Click);
+            this.Results_List.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnResults_KeyDown);
+            // 
             // BTN_Paste
             // 
             this.BTN_Paste.BackgroundImage = global::AppointmentTools.Properties.Resources.paste;
             this.BTN_Paste.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BTN_Paste.Location = new System.Drawing.Point(400, 75);
+            this.BTN_Paste.FlatAppearance.BorderSize = 0;
+            this.BTN_Paste.Location = new System.Drawing.Point(410, 75);
             this.BTN_Paste.Name = "BTN_Paste";
             this.BTN_Paste.Size = new System.Drawing.Size(29, 29);
             this.BTN_Paste.TabIndex = 7;
@@ -110,31 +127,37 @@
             this.BTN_Paste.UseVisualStyleBackColor = true;
             this.BTN_Paste.Click += new System.EventHandler(this.OnPasteButton_Click);
             // 
-            // Results_List
+            // BTN_X
             // 
-            this.Results_List.FormattingEnabled = true;
-            this.Results_List.ItemHeight = 21;
-            this.Results_List.Location = new System.Drawing.Point(12, 138);
-            this.Results_List.Name = "Results_List";
-            this.Results_List.Size = new System.Drawing.Size(417, 67);
-            this.Results_List.TabIndex = 1;
-            this.Results_List.Visible = false;
-            this.Results_List.Click += new System.EventHandler(this.OnResults_Click);
-            this.Results_List.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnResults_KeyDown);
+            this.BTN_X.BackColor = System.Drawing.SystemColors.Window;
+            this.BTN_X.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.BTN_X.FlatAppearance.BorderSize = 0;
+            this.BTN_X.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.BTN_X.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BTN_X.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_X.Font = new System.Drawing.Font("Atkinson Hyperlegible Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_X.Location = new System.Drawing.Point(408, 104);
+            this.BTN_X.Name = "BTN_X";
+            this.BTN_X.Size = new System.Drawing.Size(30, 26);
+            this.BTN_X.TabIndex = 8;
+            this.BTN_X.Text = "X";
+            this.BTN_X.UseVisualStyleBackColor = false;
+            this.BTN_X.Click += new System.EventHandler(this.OnButtonX_Click);
             // 
             // InputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 227);
+            this.ClientSize = new System.Drawing.Size(465, 230);
+            this.Controls.Add(this.BTN_X);
             this.Controls.Add(this.Results_List);
             this.Controls.Add(this.BTN_Paste);
             this.Controls.Add(this.BTN_Cancel);
             this.Controls.Add(this.BTN_Search);
             this.Controls.Add(this.Destination_TextBox);
             this.Controls.Add(this.Origin_TextBox);
-            this.Controls.Add(this.Destination_Label);
             this.Controls.Add(this.Origin_Label);
+            this.Controls.Add(this.Destination_Label);
             this.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -156,5 +179,6 @@
         private System.Windows.Forms.Button BTN_Search;
         private System.Windows.Forms.Button BTN_Cancel;
         private System.Windows.Forms.Button BTN_Paste;
+        private System.Windows.Forms.Button BTN_X;
     }
 }

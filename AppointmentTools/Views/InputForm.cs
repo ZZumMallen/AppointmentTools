@@ -69,17 +69,22 @@ namespace AppointmentTools.Views {
             }
         }
 
+        private void OnButtonX_Click(object sender, EventArgs e) {
+            Destination_TextBox.Clear();
+        }
+
         private void OnDestinationText_KeyDown(object sender, KeyEventArgs e) {
             if(e.KeyCode == Keys.Enter) {
-                SelectSuggestion();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
-            }
-            else if(e.KeyCode == Keys.Escape) {
-                HideSuggestions();
-                Results_List.Focus();
-                e.Handled = true;
-            }
+
+                if(Results_List.Visible && Results_List.SelectedIndex >= 0) {
+                    SelectSuggestion();
+                    return;
+                }
+
+                OnSearchButton_Click(sender, EventArgs.Empty);
+            }            
         }
 
         private void OnDestinationText_TextChanged(object sender, EventArgs e) {
@@ -99,7 +104,7 @@ namespace AppointmentTools.Views {
         private void OnResults_KeyDown(object sender, KeyEventArgs e) {
             if(!Results_List.Visible)
                 return;
-
+            
             switch(e.KeyCode) {
                 case Keys.Down:
                     Results_List.SelectedIndex =
@@ -216,9 +221,10 @@ namespace AppointmentTools.Views {
             Destination_TextBox.SelectionStart = Destination_TextBox.Text.Length;
             _suppressTextChanged = false;
 
-            //HideSuggestions();
+            HideSuggestions();
             Destination_TextBox.Focus();
         }
+
 
         #endregion Helper Methods
 
