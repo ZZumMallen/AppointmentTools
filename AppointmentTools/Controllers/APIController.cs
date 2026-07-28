@@ -17,7 +17,7 @@ namespace AppointmentTools.Controllers {
 
     internal static class ApiController { // Thanks Claude!
         
-        private static readonly string ApiKey = SettingsManager.GetKey();
+        private static readonly string ApiKey = SettingsManager.GetApiKey();
         private const int    PolicyMaxMinutes = 15;
         private static readonly HttpClient Http = new HttpClient();
         public static async Task<DriveTimeResult> GetAsync(string origin, string destination) {

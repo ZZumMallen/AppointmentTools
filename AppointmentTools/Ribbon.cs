@@ -111,9 +111,10 @@ namespace AppointmentTools {
 
         public void OnSettingsButton_Click(Office.IRibbonControl control) {
 
-            string apiKey = 
+            string apiKey = SettingsManager.GetApiKey().Trim();
+            int thresholdValue = SettingsManager.GetThesholdValue();
 
-            using(var form = new InputForm(origin)) {
+            using(var form = new SettingsForm()) {
                 if(form.ShowDialog() != DialogResult.OK)
                     return;
             }

@@ -1,79 +1,43 @@
-﻿using Newtonsoft.Json.Linq;
-
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 using Settings = AppointmentTools.Properties.Settings;
 
-
-
-// Settings Keys so far: CurrentKey, PolicyThreshold
-// Nonsense Settings: Setting, Setting1
-
 namespace AppointmentTools.Controllers {
 
-
     internal class SettingsManager {
-        //private const string FallbackApiKey = "AIzaSyAW_DRZU9uXOZud2w3LUsFBC0F9s_cvqgA";
 
-        public string CurrentApiKey => _apiKey;
-        public int ThresholdValue => _thresholdValue;
+        // ---- generic engine (private) ----
 
-        private readonly string _apiKey = Settings.Default.CurrentKey;
-        private readonly int _thresholdValue = Settings.Default.PolicyThreshold;
-
-        
-
-        public static string GetKey() {
+        private static T GetValue<T>(string key, T fallback) {
             try {
-                string myKey = Settings.Default.CurrentKey;
-                return myKey;
+                return (T) Settings.Default[key];
             }
             catch(Exception ex) {
-                string noKeyMessage = $"No key found! Exception: {ex.Message}";
-                return noKeyMessage;
+                MessageBox.Show($"No value found for '{key}'! Exception: {ex.Message}");
+                return fallback;
             }
         }
 
+        private static void UpdateValue<T>(string key, T newValue) {
+            object oldValue = Settings.Default[key];
+            Settings.Default[key] = newValue;
+            Settings.Default.Save();
 
-
-        public void UpdateKey(string newValue) {
-            string oldValue = Settings.Default.CurrentKey;
-            Settings.Default.CurrentKey = newValue;
-
-            MessageBox.Show($"key {oldValue} has been replaced with key: {newValue}");
-
+            MessageBox.Show($"{key}: '{oldValue}' has been replaced with '{newValue}'");
         }
 
-        public static string GetApiKey() {
-            try {
-                string value = Settings.Default.CurrentKey;
-                return value;
-            }
-            catch(Exception ex) {
-                string noKeyMessage = $"No key found! Exception: {ex.Message}";
-                return noKeyMessage;
-            }
-        }
+        // ---- typed, named wrappers (public API) ----
 
-        public static int GetThesholdValue() {
-            try {
-                int value = Settings.Default.PolicyThreshold;
-                return value;
-            }
-            catch(Exception ex) {
-                MessageBox.Show(ex.Message);
-                return nu
-            }
-        }
+        public static string GetApiKey() =>
+            GetValue(nameof(Settings.Default.CurrentKey), "No value found");
+
+        public static void UpdateAPIKey(string newValue) =>
+            UpdateValue(nameof(Settings.Default.CurrentKey), newValue);
+
+        public static int GetThesholdValue() =>
+            GetValue(nameof(Settings.Default.PolicyThreshold), 0);
+
+        public static void UpdateThresholdValue(int newValue) =>
+            UpdateValue(nameof(Settings.Default.PolicyThreshold), newValue);
     }
 }
-
-
-

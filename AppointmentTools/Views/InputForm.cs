@@ -20,7 +20,7 @@ namespace AppointmentTools.Views {
 
         public string DestinationAddress => Destination_TextBox.Text.Trim();        
         private static readonly HttpClient Http = new HttpClient();
-        private static readonly string ApiKey = SettingsManager.GetKey();
+        private static readonly string ApiKey = SettingsManager.GetApiKey();
         private readonly Timer _debounceTimer;
         private bool   _suppressTextChanged;   // prevents re-triggering while we fill the box
         private const int SuggestionItemHeight = 18;   // px per row
