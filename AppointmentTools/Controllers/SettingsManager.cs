@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Settings = AppointmentTools.Properties.Settings;
 
+
+
 // Settings Keys so far: CurrentKey, PolicyThreshold
 // Nonsense Settings: Setting, Setting1
 
@@ -34,14 +36,12 @@ namespace AppointmentTools.Controllers {
                 return myKey;
             }
             catch(Exception ex) {
-                MessageBox.Show(ex.Message);
-                return FallbackApiKey;
+                string noKeyMessage = $"No key found! Exception: {ex.Message}";
+                return noKeyMessage;
             }
         }
 
-        public void ReadValue<T> {
 
-        }
 
         public void UpdateKey(string newValue) {
             string oldValue = Settings.Default.CurrentKey;
@@ -51,24 +51,20 @@ namespace AppointmentTools.Controllers {
 
         }
 
-        public void ResetKeyToFallback() {
-            Settings.Default.CurrentKey = FallbackApiKey;
-        }
-
         public static string GetApiKey() {
             try {
                 string value = Settings.Default.CurrentKey;
                 return value;
             }
             catch(Exception ex) {
-                MessageBox.Show(ex.Message);
-                return null;
+                string noKeyMessage = $"No key found! Exception: {ex.Message}";
+                return noKeyMessage;
             }
         }
 
         public static int GetThesholdValue() {
             try {
-                int value = threshold;
+                int value = Settings.Default.PolicyThreshold;
                 return value;
             }
             catch(Exception ex) {
