@@ -25,10 +25,6 @@ namespace AppointmentTools {
 
         #region IRibbonExtensibility Members
 
-        /*        public string GetCustomUI(string ribbonID) {
-                    return GetResourceText("AppointmentTools.Ribbon.xml");
-                }*/
-
         public string GetCustomUI(string ribbonID) {
             if(ribbonID == "Microsoft.Outlook.Explorer") {
                 return GetResourceText("AppointmentTools.Ribbon.xml");
@@ -114,10 +110,13 @@ namespace AppointmentTools {
         }
 
         public void OnSettingsButton_Click(Office.IRibbonControl control) {
-            string message = ConfigController.GetKey();
 
-            MessageBox.Show(message);
-            
+            string apiKey = 
+
+            using(var form = new InputForm(origin)) {
+                if(form.ShowDialog() != DialogResult.OK)
+                    return;
+            }
         }
 
         #endregion Ribbon Callbacks

@@ -37,13 +37,13 @@ namespace AppointmentTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ThisIsNotarealket987987987987987989")]
-        public string TestKey {
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int PolicyThreshold {
             get {
-                return ((string)(this["TestKey"]));
+                return ((int)(this["PolicyThreshold"]));
             }
             set {
-                this["TestKey"] = value;
+                this["PolicyThreshold"] = value;
             }
         }
         
