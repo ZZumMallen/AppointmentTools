@@ -114,7 +114,7 @@ namespace AppointmentTools.Views {
             this.lblApiKey.Name = "lblApiKey";
             this.lblApiKey.Size = new System.Drawing.Size(120, 16);
             this.lblApiKey.TabIndex = 6;
-            this.lblApiKey.Text = "Google Maps Api Key";
+            this.lblApiKey.Text = "Google Maps API Key";
             // 
             // lblStatus
             // 
@@ -164,7 +164,7 @@ namespace AppointmentTools.Views {
             this.Name = "SettingsForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CSR Tools Settings";
+            this.Text = "Appointment Tools Settings";
             this.Load += new System.EventHandler(this.OnFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.numThreshold)).EndInit();
             this.ResumeLayout(false);

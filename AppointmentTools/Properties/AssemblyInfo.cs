@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AppointmentTools")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Outlook add-in for checking drive time and policy compliance to appointment locations.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Zachary ZumMallen")]
 [assembly: AssemblyProduct("AppointmentTools")]
-[assembly: AssemblyCopyright("Copyright ©  2026")]
+[assembly: AssemblyCopyright("Copyright © 2026 Zachary ZumMallen")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

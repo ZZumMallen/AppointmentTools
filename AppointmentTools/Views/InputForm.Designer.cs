@@ -48,7 +48,7 @@
             this.Origin_TextBox.Size = new System.Drawing.Size(325, 23);
             this.Origin_TextBox.TabIndex = 5;
             this.Origin_TextBox.TabStop = false;
-            this.Origin_TextBox.Text = "2525 Harriet Ave S, Minneapolis, MN, 55405";
+            this.Origin_TextBox.Text = "123 Main St, Anytown, USA";
             // 
             // Destination_TextBox
             // 
@@ -84,7 +84,7 @@
             this.Destination_Label.Name = "Destination_Label";
             this.Destination_Label.Size = new System.Drawing.Size(101, 16);
             this.Destination_Label.TabIndex = 6;
-            this.Destination_Label.Text = "Address to Check:";
+            this.Destination_Label.Text = "Destination Address:";
             // 
             // BTN_Search
             // 
