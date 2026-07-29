@@ -158,11 +158,11 @@ namespace AppointmentTools {
             Clipboard.SetText(location);
         }
         public void OnSettingsButton_Click(Office.IRibbonControl control) {
-
             using(var form = new SettingsForm()) {
                 form.ShowDialog();
             }
-
+        }
+        public void OnAboutButton_Click(Office.IRibbonControl control) {
 
         }
         #endregion Ribbon Callbacks

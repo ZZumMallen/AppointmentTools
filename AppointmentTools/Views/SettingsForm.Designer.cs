@@ -145,7 +145,7 @@ namespace AppointmentTools.Views {
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(394, 222);
+            this.ClientSize = new System.Drawing.Size(394, 224);
             this.Controls.Add(this.chkPlaySound);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblApiKey);
