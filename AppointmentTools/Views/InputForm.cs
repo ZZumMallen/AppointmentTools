@@ -14,7 +14,6 @@ namespace AppointmentTools.Views {
 
         public string DestinationAddress => Destination_TextBox.Text.Trim();
         private static readonly HttpClient Http = new HttpClient();
-        private static readonly string ApiKey = SettingsManager.GetApiKey();
         private readonly Timer _debounceTimer;
         private bool   _suppressTextChanged;   // prevents re-triggering while we fill the box
         private const int SuggestionItemHeight = 18;   // px per row
@@ -141,10 +140,11 @@ namespace AppointmentTools.Views {
         private async Task FetchSuggestionsAsync(string input) {
 
             try {
+                string apiKey = SettingsManager.GetApiKey();
                 string url = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
                            + $"?input={Uri.EscapeDataString(input)}"
                            + "&types=address"
-                           + $"&key={ApiKey}";
+                           + $"&key={apiKey}";
 
                 string  json        = await Http.GetStringAsync(url);
                 JObject data        = JObject.Parse(json);

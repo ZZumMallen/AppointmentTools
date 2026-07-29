@@ -304,13 +304,6 @@
   <ItemGroup>
     <None Include="Resources\paste.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\close.png" />
-    <Content Include="Resources\gears.ico" />
-    <Content Include="Resources\my_location.png" />
-    <Content Include="Resources\racing-flag.ico" />
-    <Content Include="Resources\racing-flag.png" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
