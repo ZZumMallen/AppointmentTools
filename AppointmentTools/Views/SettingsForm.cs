@@ -11,7 +11,10 @@ namespace AppointmentTools.Views {
         }
 
         private void OnFormLoad(object sender, EventArgs e) {
-            string tempKey = SettingsManager.GetApiKey();
+
+            string tempKey = "";
+
+            tempKey = SettingsManager.GetApiKey();
 
             if(string.IsNullOrWhiteSpace(tempKey)) {
                 txtApiKey.Text = "No Key Exists";
