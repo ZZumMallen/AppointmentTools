@@ -42,8 +42,8 @@ namespace AppointmentTools.Controllers {
         public static bool UpdateApiKey(string newValue) =>
             TryUpdateValue(nameof(Settings.Default.CurrentKey), newValue);
 
-        public static int GetThesholdValue() =>
-            GetValue(nameof(Settings.Default.PolicyThreshold), 0);
+        public static int GetThresholdValue() =>
+            GetValue(nameof(Settings.Default.PolicyThreshold), 15);
 
         public static bool UpdateThresholdValue(int newValue) =>
             TryUpdateValue(nameof(Settings.Default.PolicyThreshold), newValue);

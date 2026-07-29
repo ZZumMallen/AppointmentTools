@@ -39,24 +39,15 @@ namespace AppointmentTools {
 
             AppointmentItem appointment = GetActiveAppointment();
 
-            // null check 
+            // null check
             if(appointment == null) {
-                MessageBox.Show(
-                    "Please select a calendar appointment first.",
-                    "No Appointment Selected",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                ShowNoAppointmentSelectedWarning();
                 return;
             }
 
             string origin = appointment.Location?.Trim();
             if(string.IsNullOrEmpty(origin)) {
-                MessageBox.Show(
-                    "The selected appointment has no Location field set.\n\n" +
-                    "Please add an address to the appointment's Location field and try again.",
-                    "No Location Found",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                ShowNoLocationWarning();
                 return;
             }
 
@@ -81,7 +72,8 @@ namespace AppointmentTools {
 
                 if(!result.Success) {
                     MessageBox.Show(
-                        $"Could not retrieve drive time.\n\nDetails: {result.ErrorMessage} \n\n Contact the product owner or IT admin to validate API Key",
+                        $"Could not retrieve drive time.\n\nDetails: {result.ErrorMessage}\n\n" +
+                        "Contact the product owner or IT admin to verify the API key.",
                         "API Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
@@ -89,10 +81,11 @@ namespace AppointmentTools {
                 }
 
                 bool meetsPolicyStandard = result.MeetsPolicy;
+                int threshold = result.PolicyThresholdMinutes;
 
                 string policyLine = result.MeetsPolicy
-                        ? $"Meets policy  (≤ 15 min)"
-                        : $"Exceeds policy  (> 15 min)";
+                        ? $"Meets policy (≤ {threshold} min)"
+                        : $"Exceeds policy (> {threshold} min)";
 
                 using(var resultsForm = new ResultsForm(origin, destinationText, result.DisplayText, policyLine, meetsPolicyStandard)) {
                     if(resultsForm.ShowDialog() != DialogResult.OK)
@@ -108,22 +101,13 @@ namespace AppointmentTools {
             AppointmentItem appointment = GetActiveAppointment();
 
             if(appointment == null) {
-                MessageBox.Show(
-                    "Please select a calendar appointment first.",
-                    "No Appointment Selected",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                ShowNoAppointmentSelectedWarning();
                 return;
             }
 
             string location = appointment.Location?.Trim();
             if(string.IsNullOrEmpty(location)) {
-                MessageBox.Show(
-                    "The selected appointment has no Location field set.\n\n" +
-                    "Please add an address to the appointment's Location field and try again.",
-                    "No Location Found",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                ShowNoLocationWarning();
                 return;
             }
 
@@ -136,22 +120,13 @@ namespace AppointmentTools {
 
             AppointmentItem appointment = GetActiveAppointment();
             if(appointment == null) {
-                MessageBox.Show(
-                    "Please select a calendar appointment first.",
-                    "No Appointment Selected",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                ShowNoAppointmentSelectedWarning();
                 return;
             }
 
             string location = appointment.Location?.Trim();
             if(string.IsNullOrEmpty(location)) {
-                MessageBox.Show(
-                    "The selected appointment has no Location field set.\n\n" +
-                    "Please add an address to the appointment's Location field and try again.",
-                    "No Location Found",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                ShowNoLocationWarning();
                 return;
             }
 
@@ -182,6 +157,21 @@ namespace AppointmentTools {
                 appointment = fromExplorer;
 
             return appointment;
+        }
+        private static void ShowNoAppointmentSelectedWarning() {
+            MessageBox.Show(
+                "Please select a calendar appointment first.",
+                "No Appointment Selected",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+        }
+        private static void ShowNoLocationWarning() {
+            MessageBox.Show(
+                "The selected appointment has no Location field set.\n\n" +
+                "Please add an address to the appointment's Location field and try again.",
+                "No Location Found",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
         }
         private static string GetResourceText(string resourceName) {
             Assembly asm = Assembly.GetExecutingAssembly();
