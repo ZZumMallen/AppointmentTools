@@ -24,8 +24,7 @@ namespace AppointmentTools.Controllers {
             string url = BuildGoogleMapsUrl(address);
 
             try {
-                // UseShellExecute is required so the URL is handed off to the
-                // OS default browser rather than treated as an executable.
+
                 var psi = new ProcessStartInfo
                 {
                     FileName = url,

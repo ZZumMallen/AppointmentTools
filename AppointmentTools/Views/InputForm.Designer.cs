@@ -41,7 +41,7 @@
             this.Origin_TextBox.BackColor = System.Drawing.SystemColors.Window;
             this.Origin_TextBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.Origin_TextBox.Location = new System.Drawing.Point(12, 35);
-            this.Origin_TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Origin_TextBox.Margin = new System.Windows.Forms.Padding(2);
             this.Origin_TextBox.MaxLength = 500;
             this.Origin_TextBox.Name = "Origin_TextBox";
             this.Origin_TextBox.ReadOnly = true;
@@ -56,11 +56,10 @@
             this.Destination_TextBox.AcceptsTab = true;
             this.Destination_TextBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Destination_TextBox.Location = new System.Drawing.Point(12, 90);
-            this.Destination_TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Destination_TextBox.Margin = new System.Windows.Forms.Padding(2);
             this.Destination_TextBox.Name = "Destination_TextBox";
             this.Destination_TextBox.Size = new System.Drawing.Size(325, 23);
             this.Destination_TextBox.TabIndex = 0;
-            this.Destination_TextBox.Text = "Paste address here";
             this.Destination_TextBox.WordWrap = false;
             this.Destination_TextBox.TextChanged += new System.EventHandler(this.OnDestinationText_TextChanged);
             this.Destination_TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnDestinationText_KeyDown);
@@ -90,7 +89,7 @@
             // BTN_Search
             // 
             this.BTN_Search.Location = new System.Drawing.Point(210, 160);
-            this.BTN_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BTN_Search.Margin = new System.Windows.Forms.Padding(2);
             this.BTN_Search.Name = "BTN_Search";
             this.BTN_Search.Size = new System.Drawing.Size(75, 23);
             this.BTN_Search.TabIndex = 2;
@@ -101,7 +100,7 @@
             // BTN_Cancel
             // 
             this.BTN_Cancel.Location = new System.Drawing.Point(289, 160);
-            this.BTN_Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BTN_Cancel.Margin = new System.Windows.Forms.Padding(2);
             this.BTN_Cancel.Name = "BTN_Cancel";
             this.BTN_Cancel.Size = new System.Drawing.Size(75, 23);
             this.BTN_Cancel.TabIndex = 3;
@@ -115,7 +114,7 @@
             this.Results_List.HorizontalScrollbar = true;
             this.Results_List.ItemHeight = 16;
             this.Results_List.Location = new System.Drawing.Point(13, 117);
-            this.Results_List.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Results_List.Margin = new System.Windows.Forms.Padding(2);
             this.Results_List.Name = "Results_List";
             this.Results_List.Size = new System.Drawing.Size(324, 68);
             this.Results_List.TabIndex = 1;
@@ -132,7 +131,7 @@
             this.BTN_Paste.FlatAppearance.BorderSize = 0;
             this.BTN_Paste.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.BTN_Paste.Location = new System.Drawing.Point(341, 91);
-            this.BTN_Paste.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BTN_Paste.Margin = new System.Windows.Forms.Padding(2);
             this.BTN_Paste.Name = "BTN_Paste";
             this.BTN_Paste.Size = new System.Drawing.Size(23, 22);
             this.BTN_Paste.TabIndex = 7;

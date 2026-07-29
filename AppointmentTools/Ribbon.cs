@@ -135,6 +135,36 @@ namespace AppointmentTools {
             MapsService.OpenGoogleMaps(location);
         }
 
+        public void OnCopyButton_Click(Office.IRibbonControl control) {
+            if(control is null) {
+                throw new ArgumentNullException(nameof(control));
+            }
+
+            AppointmentItem appointment = GetActiveAppointment();
+            if(appointment == null) {
+                MessageBox.Show(
+                    "Please select a calendar appointment first.",
+                    "No Appointment Selected",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            string location = appointment.Location?.Trim();
+            if(string.IsNullOrEmpty(location)) {
+                MessageBox.Show(
+                    "The selected appointment has no Location field set.\n\n" +
+                    "Please add an address to the appointment's Location field and try again.",
+                    "No Location Found",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            Clipboard.SetText(location);
+        }
+        
+
         public void OnSettingsButton_Click(Office.IRibbonControl control) {
 
             using(var form = new SettingsForm()) {

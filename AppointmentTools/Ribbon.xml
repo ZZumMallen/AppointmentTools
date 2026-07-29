@@ -4,9 +4,11 @@
 	<contextualTabs>
 		<tabSet idMso="TabSetAppointment" visible="true">
 		  <tab idMso="TabAppointment">
-			  <group id="AppointmentToolsGroup" label ="CSR Tools">
-				  <button id ="DriveTimeButton" label="Check Drive Time" size="large" imageMso="StartTimer" onAction="OnDriveTimeButton_Click"/>
+			  <group id="AppointmentToolsGroup" label ="CSR Appointment Tools">
+				  <button id ="DriveTimeButton" label="Check Drive Time" size="large" imageMso="StartTimer" onAction="OnDriveTimeButton_Click"/>				  
 				  <button id ="GoogleMapsButton" label="Google Maps" size="large" imageMso="OtherWebLocationsShortcutMenu" onAction="OnGoogleMapsButton_Click"/>
+				  <button id ="CopyButton" label="Copy Location" size="large" imageMso="Copy" onAction="OnCopyButton_Click"/>
+				  <separator id="AddinSeparator"/>
 				  <button id ="Settings" label="Settings" size="large" imageMso="CurrentViewSettings" onAction="OnSettingsButton_Click"/>
 			  </group>
 		  </tab>
