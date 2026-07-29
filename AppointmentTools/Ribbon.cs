@@ -1,16 +1,13 @@
-﻿using AppointmentTools.Views;
-using AppointmentTools.Controllers;
+﻿using AppointmentTools.Controllers;
+using AppointmentTools.Views;
 using Microsoft.Office.Interop.Outlook;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
-using Office = Microsoft.Office.Core;
 using InputForm = AppointmentTools.Views.InputForm;
+using Office = Microsoft.Office.Core;
 
 #pragma warning disable IDE0060
 
@@ -25,8 +22,12 @@ namespace AppointmentTools {
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID) {
-            return GetResourceText("AppointmentTools.Ribbon.xml");
+            if(ribbonID == "Microsoft.Outlook.Explorer") {
+                return GetResourceText("AppointmentTools.Ribbon.xml");
+            }
+            return null;
         }
+
         #endregion
 
         #region Ribbon Callbacks
@@ -102,6 +103,15 @@ namespace AppointmentTools {
                         return;
                 }
             }
+        }
+
+        public void OnSettingsButton_Click(Office.IRibbonControl control) {
+
+            using(var form = new SettingsForm()) {
+                form.ShowDialog();
+            }
+
+            
         }
 
         #endregion Ribbon Callbacks
