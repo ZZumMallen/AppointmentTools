@@ -25,7 +25,7 @@ namespace AppointmentTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Enter new Key")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CurrentKey {
             get {
                 return ((string)(this["CurrentKey"]));

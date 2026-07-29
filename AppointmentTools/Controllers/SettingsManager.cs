@@ -4,7 +4,7 @@ using Settings = AppointmentTools.Properties.Settings;
 
 namespace AppointmentTools.Controllers {
 
-    internal class SettingsManager {
+    public static class SettingsManager {
 
         // ---- generic engine (private) ----
 

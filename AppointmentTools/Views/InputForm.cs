@@ -63,10 +63,6 @@ namespace AppointmentTools.Views {
             }
         }
 
-        private void OnButtonX_Click(object sender, EventArgs e) {
-            Destination_TextBox.Clear();
-        }
-
         private void OnDestinationText_KeyDown(object sender, KeyEventArgs e) {
             if(e.KeyCode == Keys.Enter) {
                 e.Handled = true;

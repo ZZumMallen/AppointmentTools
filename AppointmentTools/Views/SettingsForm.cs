@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace AppointmentTools.Views {
     public partial class SettingsForm : Form {
+        private const string NoKeyPlaceholder = "No Key Exists";
         public SettingsForm() {
             InitializeComponent();
         }
@@ -17,7 +18,7 @@ namespace AppointmentTools.Views {
             tempKey = SettingsManager.GetApiKey();
 
             if(string.IsNullOrWhiteSpace(tempKey)) {
-                txtApiKey.Text = "No Key Exists";
+                txtApiKey.Text = NoKeyPlaceholder;
                 txtApiKey.UseSystemPasswordChar = false;
             }
             else {
@@ -47,9 +48,9 @@ namespace AppointmentTools.Views {
         private async void BtnSave_Click(object sender, EventArgs e) {
             string keyToSave = txtApiKey.Text.Trim();
 
-            if(string.IsNullOrWhiteSpace(keyToSave)) {
-                ShowStatus("API key can't be blank.", isError: true);
-                return;
+            bool clearingKey = string.IsNullOrWhiteSpace(keyToSave) || keyToSave == NoKeyPlaceholder;
+            if(clearingKey) {
+                keyToSave = "";
             }
 
             int thresholdToSave = (int) numThreshold.Value;
@@ -67,7 +68,7 @@ namespace AppointmentTools.Views {
                 return;
             }
 
-            ShowStatus("Settings saved.", isError: false);
+            ShowStatus(clearingKey ? "API key cleared." : "Settings saved.", isError: false);
 
             // brief pause so the confirmation is actually readable before the dialog closes
             await Task.Delay(700);

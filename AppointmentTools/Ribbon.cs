@@ -81,7 +81,7 @@ namespace AppointmentTools {
 
                 if(!result.Success) {
                     MessageBox.Show(
-                        $"Could not retrieve drive time.\n\nDetails: {result.ErrorMessage}",
+                        $"Could not retrieve drive time.\n\nDetails: {result.ErrorMessage} \n\n Contact the product owner or IT admin to validate API Key",
                         "API Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
