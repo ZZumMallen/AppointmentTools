@@ -20,22 +20,18 @@ namespace AppointmentTools {
         public Ribbon() { }
 
         #region IRibbonExtensibility Members
-
         public string GetCustomUI(string ribbonID) {
             if(ribbonID == "Microsoft.Outlook.Explorer") {
                 return GetResourceText("AppointmentTools.Ribbon.xml");
             }
             return null;
         }
-
         #endregion
 
         #region Ribbon Callbacks
-
         public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
             this.ribbon = ribbonUI;
         }
-
         public async void OnDriveTimeButton_Click(Office.IRibbonControl control) {
             if(control is null) {
                 throw new ArgumentNullException(nameof(control));
@@ -104,7 +100,6 @@ namespace AppointmentTools {
                 }
             }
         }
-
         public void OnGoogleMapsButton_Click(Office.IRibbonControl control) {
             if(control is null) {
                 throw new ArgumentNullException(nameof(control));
@@ -134,7 +129,6 @@ namespace AppointmentTools {
 
             MapsService.OpenGoogleMaps(location);
         }
-
         public void OnCopyButton_Click(Office.IRibbonControl control) {
             if(control is null) {
                 throw new ArgumentNullException(nameof(control));
@@ -163,21 +157,17 @@ namespace AppointmentTools {
 
             Clipboard.SetText(location);
         }
-        
-
         public void OnSettingsButton_Click(Office.IRibbonControl control) {
 
             using(var form = new SettingsForm()) {
                 form.ShowDialog();
             }
 
-            
-        }
 
+        }
         #endregion Ribbon Callbacks
 
         #region Helpers
-
         private AppointmentItem GetActiveAppointment() {
             var app = Globals.ThisAddIn.Application;
             AppointmentItem appointment = null;
@@ -193,7 +183,6 @@ namespace AppointmentTools {
 
             return appointment;
         }
-
         private static string GetResourceText(string resourceName) {
             Assembly asm = Assembly.GetExecutingAssembly();
             string[] resourceNames = asm.GetManifestResourceNames();
@@ -208,7 +197,6 @@ namespace AppointmentTools {
             }
             return null;
         }
-
         #endregion
     }
 }

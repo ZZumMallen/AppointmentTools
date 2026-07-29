@@ -1,11 +1,6 @@
 ﻿using AppointmentTools.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,7 +24,7 @@ namespace AppointmentTools.Views {
             bool tempSound = SettingsManager.GetSoundEnabledValue();
             chkPlaySound.Checked = tempSound;
 
-            
+
         }
 
         private void ChkShowKey_CheckedChanged(object sender, EventArgs e) {
