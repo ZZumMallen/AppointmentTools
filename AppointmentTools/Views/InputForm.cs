@@ -218,5 +218,8 @@ namespace AppointmentTools.Views {
 
         #endregion Helper Methods
 
+        private void Results_List_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
     }
 }

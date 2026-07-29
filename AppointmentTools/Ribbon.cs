@@ -96,13 +96,43 @@ namespace AppointmentTools {
 
                 string policyLine = result.MeetsPolicy
                         ? $"Meets policy  (≤ 15 min)"
-                        : $"Exceeds policy  (> 15 min) — find a different slot.";
+                        : $"Exceeds policy  (> 15 min)";
 
                 using(var resultsForm = new ResultsForm(origin, destinationText, result.DisplayText, policyLine, meetsPolicyStandard)) {
                     if(resultsForm.ShowDialog() != DialogResult.OK)
                         return;
                 }
             }
+        }
+
+        public void OnGoogleMapsButton_Click(Office.IRibbonControl control) {
+            if(control is null) {
+                throw new ArgumentNullException(nameof(control));
+            }
+
+            AppointmentItem appointment = GetActiveAppointment();
+
+            if(appointment == null) {
+                MessageBox.Show(
+                    "Please select a calendar appointment first.",
+                    "No Appointment Selected",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            string location = appointment.Location?.Trim();
+            if(string.IsNullOrEmpty(location)) {
+                MessageBox.Show(
+                    "The selected appointment has no Location field set.\n\n" +
+                    "Please add an address to the appointment's Location field and try again.",
+                    "No Location Found",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            MapsService.OpenGoogleMaps(location);
         }
 
         public void OnSettingsButton_Click(Office.IRibbonControl control) {

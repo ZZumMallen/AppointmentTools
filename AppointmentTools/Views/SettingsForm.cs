@@ -25,6 +25,11 @@ namespace AppointmentTools.Views {
             else {
                 txtApiKey.Text = tempKey;
             }
+
+            bool tempSound = SettingsManager.GetSoundEnabledValue();
+            chkPlaySound.Checked = tempSound;
+
+            
         }
 
         private void ChkShowKey_CheckedChanged(object sender, EventArgs e) {
@@ -78,6 +83,18 @@ namespace AppointmentTools.Views {
             lblStatus.Text = message;
         }
 
+        private void ChkPlaySound_CheckedChanged(object sender, EventArgs e) {
+            var check = chkPlaySound.Checked;
 
+            switch(check) {
+                case true:
+                    SettingsManager.UpdateSoundEnabledValue(true);
+                    return;
+                case false:
+                    SettingsManager.UpdateSoundEnabledValue(false);
+                    return;
+
+            }
+        }
     }
 }

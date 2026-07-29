@@ -47,5 +47,11 @@ namespace AppointmentTools.Controllers {
 
         public static bool UpdateThresholdValue(int newValue) =>
             TryUpdateValue(nameof(Settings.Default.PolicyThreshold), newValue);
+
+        public static bool GetSoundEnabledValue() =>
+            GetValue(nameof(Settings.Default.EnableSound), true);
+
+        public static bool UpdateSoundEnabledValue(bool newValue) =>
+            TryUpdateValue(nameof(Settings.Default.EnableSound), newValue);
     }
 }

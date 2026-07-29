@@ -230,6 +230,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Controllers\MapsService.cs" />
     <Compile Include="Controllers\SettingsManager.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -305,6 +306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\close.png" />
+    <Content Include="Resources\gears.ico" />
     <Content Include="Resources\my_location.png" />
     <Content Include="Resources\racing-flag.ico" />
     <Content Include="Resources\racing-flag.png" />
