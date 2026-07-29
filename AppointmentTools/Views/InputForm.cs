@@ -1,14 +1,8 @@
 ﻿using AppointmentTools.Controllers;
-using AppointmentTools.Views;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,7 +12,7 @@ namespace AppointmentTools.Views {
 
         #region Fields
 
-        public string DestinationAddress => Destination_TextBox.Text.Trim();        
+        public string DestinationAddress => Destination_TextBox.Text.Trim();
         private static readonly HttpClient Http = new HttpClient();
         private static readonly string ApiKey = SettingsManager.GetApiKey();
         private readonly Timer _debounceTimer;
@@ -84,7 +78,7 @@ namespace AppointmentTools.Views {
                 }
 
                 OnSearchButton_Click(sender, EventArgs.Empty);
-            }            
+            }
         }
 
         private void OnDestinationText_TextChanged(object sender, EventArgs e) {
@@ -104,7 +98,7 @@ namespace AppointmentTools.Views {
         private void OnResults_KeyDown(object sender, KeyEventArgs e) {
             if(!Results_List.Visible)
                 return;
-            
+
             switch(e.KeyCode) {
                 case Keys.Down:
                     Results_List.SelectedIndex =
@@ -158,9 +152,6 @@ namespace AppointmentTools.Views {
 
                 string  json        = await Http.GetStringAsync(url);
                 JObject data        = JObject.Parse(json);
-
-
-
 
                 var     predictions = data["predictions"] as JArray;
 
@@ -224,7 +215,6 @@ namespace AppointmentTools.Views {
             HideSuggestions();
             Destination_TextBox.Focus();
         }
-
 
         #endregion Helper Methods
 

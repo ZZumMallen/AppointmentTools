@@ -11,57 +11,71 @@ using System.Windows.Forms;
 
 namespace AppointmentTools.Views {
     public partial class SettingsForm : Form {
-
-        private string previousApiValue;
-        private string currentApiValue;
-        private string newApiValue;
-
-        private int previousThresholdValue;
-        private int currentThresholdValue;
-        private int newThresholdValue;
-
         public SettingsForm() {
             InitializeComponent();
         }
 
         private void OnFormLoad(object sender, EventArgs e) {
-            // save previous settings
+            string tempKey = SettingsManager.GetApiKey();
 
-            previousApiValue = SettingsManager.GetApiKey(); 
-            previousThresholdValue = SettingsManager.GetThesholdValue();
+            if(string.IsNullOrWhiteSpace(tempKey)) {
+                txtApiKey.Text = "No Key Exists";
+                txtApiKey.UseSystemPasswordChar = false;
+            }
+            else {
+                txtApiKey.Text = tempKey;
+            }
         }
 
-        private void OnApiShowButton(object sender, EventArgs e) {
-            switch(txt_apiKey.UseSystemPasswordChar) {
+        private void ChkShowKey_CheckedChanged(object sender, EventArgs e) {
+            var check = chkShowKey.Checked;
+
+            switch(check) {
                 case true:
-                    txt_apiKey.UseSystemPasswordChar = false;
-                    break;
+                    txtApiKey.UseSystemPasswordChar = false;
+                    return;
                 case false:
-                    txt_apiKey.UseSystemPasswordChar = true;
-                    break;
+                    txtApiKey.UseSystemPasswordChar = true;
+                    return;
+
             }
         }
 
-        private void OnApiUnlockButton(object sender, EventArgs e) {
-            if(txt_apiKey.ReadOnly) { 
-                txt_apiKey.ReadOnly = false;
-            }        
-        }
+        private async void BtnSave_Click(object sender, EventArgs e) {
+            string keyToSave = txtApiKey.Text.Trim();
 
-        private void OnThresholdUnlockButton(object sender, EventArgs e) {
-            if(num_UpDown.ReadOnly) {
-                num_UpDown.ReadOnly = false;
+            if(string.IsNullOrWhiteSpace(keyToSave)) {
+                ShowStatus("API key can't be blank.", isError: true);
+                return;
             }
+
+            int thresholdToSave = (int) numThreshold.Value;
+
+            btnSave.Enabled = false;
+            btnCancel.Enabled = false;
+
+            bool keySaved = SettingsManager.UpdateApiKey(keyToSave);
+            bool thresholdSaved = SettingsManager.UpdateThresholdValue(thresholdToSave);
+
+            if(!keySaved || !thresholdSaved) {
+                ShowStatus("Something went wrong saving your settings. Please try again.", isError: true);
+                btnSave.Enabled = true;
+                btnCancel.Enabled = true;
+                return;
+            }
+
+            ShowStatus("Settings saved.", isError: false);
+
+            // brief pause so the confirmation is actually readable before the dialog closes
+            await Task.Delay(700);
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        private void OnSaveButton(object sender, EventArgs e) {
-            SettingsManager.UpdateAPIKey(newApiValue);
-            SettingsManager.UpdateThresholdValue(newThresholdValue);
-        }
-
-        private void OnUndoButton(object sender, EventArgs e) {
-            SettingsManager.UpdateAPIKey(previousApiValue);
-            SettingsManager.UpdateThresholdValue(previousThresholdValue);
+        private void ShowStatus(string message, bool isError) {
+            lblStatus.ForeColor = isError ? Color.Firebrick : Color.SeaGreen;
+            lblStatus.Text = message;
         }
 
 

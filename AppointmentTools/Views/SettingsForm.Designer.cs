@@ -1,4 +1,6 @@
-﻿namespace AppointmentTools.Views {
+﻿using System.Windows.Forms;
+
+namespace AppointmentTools.Views {
     partial class SettingsForm {
         /// <summary>
         /// Required designer variable.
@@ -18,181 +20,150 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+        private const int MinThresholdMinutes = 1;
+        private const int MaxThresholdMinutes = 180;
+
         private void InitializeComponent() {
-            this.txt_apiKey = new System.Windows.Forms.TextBox();
-            this.lbl_apiKey = new System.Windows.Forms.Label();
-            this.lbl_policyThreshold = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.num_UpDown = new System.Windows.Forms.NumericUpDown();
-            this.btn_unlockPolicyThreshold = new System.Windows.Forms.Button();
-            this.btn_unlockApiKey = new System.Windows.Forms.Button();
-            this.btn_showApiKey = new System.Windows.Forms.Button();
-            this.btn_saveSettings = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_UpDown)).BeginInit();
+            this.txtApiKey = new System.Windows.Forms.TextBox();
+            this.chkShowKey = new System.Windows.Forms.CheckBox();
+            this.numThreshold = new System.Windows.Forms.NumericUpDown();
+            this.lblThreshold = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblApiKey = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numThreshold)).BeginInit();
             this.SuspendLayout();
             // 
-            // txt_apiKey
+            // txtApiKey
             // 
-            this.txt_apiKey.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txt_apiKey.Location = new System.Drawing.Point(180, 5);
-            this.txt_apiKey.Name = "txt_apiKey";
-            this.txt_apiKey.ReadOnly = true;
-            this.txt_apiKey.Size = new System.Drawing.Size(342, 23);
-            this.txt_apiKey.TabIndex = 0;
-            this.txt_apiKey.Text = "AIzaSyAW_DRZU9uXOZud2w3LUsFBC0F9s_cvqgA";
-            this.txt_apiKey.UseSystemPasswordChar = true;
+            this.txtApiKey.Location = new System.Drawing.Point(12, 35);
+            this.txtApiKey.Name = "txtApiKey";
+            this.txtApiKey.Size = new System.Drawing.Size(308, 23);
+            this.txtApiKey.TabIndex = 0;
+            this.txtApiKey.UseSystemPasswordChar = true;
             // 
-            // lbl_apiKey
+            // chkShowKey
             // 
-            this.lbl_apiKey.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_apiKey.AutoSize = true;
-            this.lbl_apiKey.Location = new System.Drawing.Point(3, 8);
-            this.lbl_apiKey.Name = "lbl_apiKey";
-            this.lbl_apiKey.Size = new System.Drawing.Size(57, 17);
-            this.lbl_apiKey.TabIndex = 2;
-            this.lbl_apiKey.Text = "API Key";
+            this.chkShowKey.AutoSize = true;
+            this.chkShowKey.Location = new System.Drawing.Point(326, 37);
+            this.chkShowKey.Name = "chkShowKey";
+            this.chkShowKey.Size = new System.Drawing.Size(56, 20);
+            this.chkShowKey.TabIndex = 1;
+            this.chkShowKey.Text = "Show";
+            this.chkShowKey.UseVisualStyleBackColor = true;
+            this.chkShowKey.CheckedChanged += new System.EventHandler(this.ChkShowKey_CheckedChanged);
             // 
-            // lbl_policyThreshold
+            // numThreshold
             // 
-            this.lbl_policyThreshold.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_policyThreshold.AutoSize = true;
-            this.lbl_policyThreshold.Location = new System.Drawing.Point(3, 41);
-            this.lbl_policyThreshold.Name = "lbl_policyThreshold";
-            this.lbl_policyThreshold.Size = new System.Drawing.Size(135, 17);
-            this.lbl_policyThreshold.TabIndex = 3;
-            this.lbl_policyThreshold.Text = "Drivetime Threshold";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
-            this.tableLayoutPanel1.Controls.Add(this.num_UpDown, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_apiKey, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txt_apiKey, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_policyThreshold, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btn_unlockPolicyThreshold, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btn_unlockApiKey, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_showApiKey, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_saveSettings, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 2, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(698, 134);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // num_UpDown
-            // 
-            this.num_UpDown.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.num_UpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.num_UpDown.Location = new System.Drawing.Point(438, 38);
-            this.num_UpDown.Name = "num_UpDown";
-            this.num_UpDown.ReadOnly = true;
-            this.num_UpDown.Size = new System.Drawing.Size(84, 23);
-            this.num_UpDown.TabIndex = 5;
-            this.num_UpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.num_UpDown.Value = new decimal(new int[] {
+            this.numThreshold.Location = new System.Drawing.Point(12, 90);
+            this.numThreshold.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numThreshold.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numThreshold.Name = "numThreshold";
+            this.numThreshold.Size = new System.Drawing.Size(80, 23);
+            this.numThreshold.TabIndex = 2;
+            this.numThreshold.Value = new decimal(new int[] {
             15,
             0,
             0,
             0});
             // 
-            // btn_unlockPolicyThreshold
+            // lblThreshold
             // 
-            this.btn_unlockPolicyThreshold.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btn_unlockPolicyThreshold.Location = new System.Drawing.Point(528, 36);
-            this.btn_unlockPolicyThreshold.Name = "btn_unlockPolicyThreshold";
-            this.btn_unlockPolicyThreshold.Size = new System.Drawing.Size(75, 27);
-            this.btn_unlockPolicyThreshold.TabIndex = 7;
-            this.btn_unlockPolicyThreshold.Text = "unlock";
-            this.btn_unlockPolicyThreshold.UseVisualStyleBackColor = true;
-            this.btn_unlockPolicyThreshold.Click += new System.EventHandler(this.OnThresholdUnlockButton);
+            this.lblThreshold.AutoSize = true;
+            this.lblThreshold.Location = new System.Drawing.Point(12, 70);
+            this.lblThreshold.Name = "lblThreshold";
+            this.lblThreshold.Size = new System.Drawing.Size(152, 16);
+            this.lblThreshold.TabIndex = 3;
+            this.lblThreshold.Text = "Drive Time Policy Threshold";
             // 
-            // btn_unlockApiKey
+            // btnSave
             // 
-            this.btn_unlockApiKey.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btn_unlockApiKey.Location = new System.Drawing.Point(528, 3);
-            this.btn_unlockApiKey.Name = "btn_unlockApiKey";
-            this.btn_unlockApiKey.Size = new System.Drawing.Size(75, 27);
-            this.btn_unlockApiKey.TabIndex = 6;
-            this.btn_unlockApiKey.Text = "unlock";
-            this.btn_unlockApiKey.UseVisualStyleBackColor = true;
-            this.btn_unlockApiKey.Click += new System.EventHandler(this.OnApiUnlockButton);
+            this.btnSave.Location = new System.Drawing.Point(226, 151);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // btn_showApiKey
+            // btnCancel
             // 
-            this.btn_showApiKey.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btn_showApiKey.Location = new System.Drawing.Point(610, 3);
-            this.btn_showApiKey.Name = "btn_showApiKey";
-            this.btn_showApiKey.Size = new System.Drawing.Size(75, 27);
-            this.btn_showApiKey.TabIndex = 5;
-            this.btn_showApiKey.Text = "show";
-            this.btn_showApiKey.UseVisualStyleBackColor = true;
-            this.btn_showApiKey.Click += new System.EventHandler(this.OnApiShowButton);
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(307, 151);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // btn_saveSettings
+            // lblApiKey
             // 
-            this.btn_saveSettings.Location = new System.Drawing.Point(610, 102);
-            this.btn_saveSettings.Name = "btn_saveSettings";
-            this.btn_saveSettings.Size = new System.Drawing.Size(75, 27);
-            this.btn_saveSettings.TabIndex = 5;
-            this.btn_saveSettings.Text = "Save";
-            this.btn_saveSettings.UseVisualStyleBackColor = true;
-            this.btn_saveSettings.Click += new System.EventHandler(this.OnSaveButton);
+            this.lblApiKey.AutoSize = true;
+            this.lblApiKey.Location = new System.Drawing.Point(12, 15);
+            this.lblApiKey.Name = "lblApiKey";
+            this.lblApiKey.Size = new System.Drawing.Size(120, 16);
+            this.lblApiKey.TabIndex = 6;
+            this.lblApiKey.Text = "Google Maps Api Key";
             // 
-            // button1
+            // lblStatus
             // 
-            this.button1.Location = new System.Drawing.Point(528, 102);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Undo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.OnUndoButton);
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblStatus.Location = new System.Drawing.Point(12, 122);
+            this.lblStatus.MaximumSize = new System.Drawing.Size(350, 0);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 16);
+            this.lblStatus.TabIndex = 7;
             // 
             // SettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.btnSave;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 160);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(394, 186);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.lblApiKey);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.lblThreshold);
+            this.Controls.Add(this.numThreshold);
+            this.Controls.Add(this.chkShowKey);
+            this.Controls.Add(this.txtApiKey);
+            this.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SettingsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SettingsForm";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "CSR Tools Settings";
             this.Load += new System.EventHandler(this.OnFormLoad);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_UpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numThreshold)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txt_apiKey;
-        private System.Windows.Forms.Label lbl_apiKey;
-        private System.Windows.Forms.Label lbl_policyThreshold;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button btn_showApiKey;
-        private System.Windows.Forms.NumericUpDown num_UpDown;
-        private System.Windows.Forms.Button btn_unlockApiKey;
-        private System.Windows.Forms.Button btn_unlockPolicyThreshold;
-        private System.Windows.Forms.Button btn_saveSettings;
-        private System.Windows.Forms.Button button1;
+        private TextBox txtApiKey;
+        private CheckBox chkShowKey;
+        private NumericUpDown numThreshold;
+        private Label lblThreshold;
+        private Button btnSave;
+        private Button btnCancel;
+        private Label lblApiKey;
+        private Label lblStatus;
     }
 }

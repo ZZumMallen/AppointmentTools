@@ -18,12 +18,20 @@ namespace AppointmentTools.Controllers {
             }
         }
 
-        private static void UpdateValue<T>(string key, T newValue) {
-            object oldValue = Settings.Default[key];
-            Settings.Default[key] = newValue;
-            Settings.Default.Save();
-
-            MessageBox.Show($"{key}: '{oldValue}' has been replaced with '{newValue}'");
+        private static bool TryUpdateValue<T>(string key, T newValue) {
+            try {
+                Settings.Default[key] = newValue;
+                Settings.Default.Save();
+                return true;
+            }
+            catch(Exception ex) {
+                MessageBox.Show(
+                    $"Failed to save '{key}'. Exception: {ex.Message}",
+                    "Settings Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         // ---- typed, named wrappers (public API) ----
@@ -31,13 +39,13 @@ namespace AppointmentTools.Controllers {
         public static string GetApiKey() =>
             GetValue(nameof(Settings.Default.CurrentKey), "No value found");
 
-        public static void UpdateAPIKey(string newValue) =>
-            UpdateValue(nameof(Settings.Default.CurrentKey), newValue);
+        public static bool UpdateApiKey(string newValue) =>
+            TryUpdateValue(nameof(Settings.Default.CurrentKey), newValue);
 
         public static int GetThesholdValue() =>
             GetValue(nameof(Settings.Default.PolicyThreshold), 0);
 
-        public static void UpdateThresholdValue(int newValue) =>
-            UpdateValue(nameof(Settings.Default.PolicyThreshold), newValue);
+        public static bool UpdateThresholdValue(int newValue) =>
+            TryUpdateValue(nameof(Settings.Default.PolicyThreshold), newValue);
     }
 }

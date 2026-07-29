@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
-using AppointmentTools.Views;
-using System.Linq;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System;
 
 namespace AppointmentTools.Controllers {
 
@@ -16,7 +14,7 @@ namespace AppointmentTools.Controllers {
     }
 
     internal static class ApiController { // Thanks Claude!
-        
+
         private static readonly string ApiKey = SettingsManager.GetApiKey();
         private const int    PolicyMaxMinutes = 15;
         private static readonly HttpClient Http = new HttpClient();

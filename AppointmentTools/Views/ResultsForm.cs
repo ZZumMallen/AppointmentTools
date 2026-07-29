@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppointmentTools.Views {
     public partial class ResultsForm : Form {
 
         public ResultsForm(string from, string to, string driveTime, string policyLine, bool meetsPolicyStandard) {
-            InitializeComponent();            
-            Label_HeaderFrom.Text = $"From: {from}";
-            Label_HeaderTo.Text = $"To: {to}";
-            Label_HeaderTime.Text = $"Time: {driveTime}";            
+            InitializeComponent();
+            Label_HeaderFrom.Text = from;
+            Label_HeaderTo.Text = to;
+            Label_HeaderTime.Text = driveTime;
             Label_PolicyLine.Text = policyLine;
 
             if(meetsPolicyStandard) {

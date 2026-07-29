@@ -1,17 +1,13 @@
-﻿using AppointmentTools.Views;
-using AppointmentTools.Controllers;
+﻿using AppointmentTools.Controllers;
+using AppointmentTools.Views;
 using Microsoft.Office.Interop.Outlook;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
-using Office = Microsoft.Office.Core;
 using InputForm = AppointmentTools.Views.InputForm;
-using Microsoft.Office.Core;
+using Office = Microsoft.Office.Core;
 
 #pragma warning disable IDE0060
 
@@ -111,13 +107,11 @@ namespace AppointmentTools {
 
         public void OnSettingsButton_Click(Office.IRibbonControl control) {
 
-            string apiKey = SettingsManager.GetApiKey().Trim();
-            int thresholdValue = SettingsManager.GetThesholdValue();
-
             using(var form = new SettingsForm()) {
-                if(form.ShowDialog() != DialogResult.OK)
-                    return;
+                form.ShowDialog();
             }
+
+            
         }
 
         #endregion Ribbon Callbacks
