@@ -9,7 +9,10 @@ An Outlook add-in (VSTO) that helps customer service reps quickly check drive ti
 - **Copy Location** — copy the appointment's location to the clipboard.
 - **Settings** — configure your Google Maps API key, the drive-time policy threshold (in minutes), and whether a sound plays when a result exceeds policy.
 
-These buttons appear on a contextual ribbon tab that shows up when working with a calendar appointment.
+> [!IMPORTANT]
+> **These buttons appear on a contextual ribbon tab that shows up when a calendar appointment is selected**.
+
+<img width="246" height="99" alt="AppointmentToolsRibbonPic" src="https://github.com/user-attachments/assets/0b1c5872-efc4-4a62-aeaf-b0139b8161dc" />
 
 ## Requirements
 
