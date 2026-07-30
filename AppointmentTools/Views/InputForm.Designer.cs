@@ -82,7 +82,7 @@
             this.Destination_Label.Location = new System.Drawing.Point(12, 70);
             this.Destination_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Destination_Label.Name = "Destination_Label";
-            this.Destination_Label.Size = new System.Drawing.Size(101, 16);
+            this.Destination_Label.Size = new System.Drawing.Size(114, 16);
             this.Destination_Label.TabIndex = 6;
             this.Destination_Label.Text = "Destination Address:";
             // 

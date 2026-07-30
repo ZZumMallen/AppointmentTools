@@ -25,15 +25,38 @@
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>AppointmentTools</RootNamespace>
-    <AssemblyName>AppointmentTools</AssemblyName>
-    <LoadBehavior>3</LoadBehavior>
+    <AssemblyName>Appointment Tools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
     <ResolveComReferenceSilent>true</ResolveComReferenceSilent>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <PublishUrl>C:\Publish\</PublishUrl>
+    <InstallUrl />
+    <TargetCulture>en</TargetCulture>
+    <ApplicationVersion>2.0.0.2</ApplicationVersion>
+    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateInterval>0</UpdateInterval>
+    <UpdateIntervalUnits>days</UpdateIntervalUnits>
+    <ProductName>AppointmentTools</ProductName>
+    <PublisherName>Zachary ZumMallen</PublisherName>
+    <SupportUrl>https://github.com/ZZumMallen/AppointmentTools/</SupportUrl>
+    <FriendlyName>AppointmentTools</FriendlyName>
+    <OfficeApplicationDescription />
+    <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
@@ -66,11 +89,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -91,10 +115,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\Publish\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <!--
     This section specifies references for the project.
@@ -304,6 +329,9 @@
   <ItemGroup>
     <None Include="Resources\paste.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\racing_flag.ico" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -313,10 +341,21 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AppointmentTools_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C8B0CD63DF6D980C59B6849ABC37DCDB373DD24C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>00608F6B9C08C5C3797578EB7968CFE02EE10289</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\racing_flag.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Include additional build rules for an Office application add-in. -->
@@ -326,8 +365,8 @@
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Outlook" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Outlook" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Outlook\InstallRoot\Path#outlook.exe" AddItemTemplatesGuid="{A58A78EB-1C92-4DDD-80CF-E8BD872ABFC4}" />
-        <Host Name="Outlook" GeneratedCodeNamespace="AppointmentTools" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
+        <Host Name="Outlook" GeneratedCodeNamespace="AppointmentTools" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="C77A4D38E846D4E8240AD15AAA8B74B6BE117B8A" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>
     </VisualStudio>

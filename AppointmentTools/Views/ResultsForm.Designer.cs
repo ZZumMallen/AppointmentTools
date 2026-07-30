@@ -36,7 +36,7 @@
             // Button_Ok
             // 
             this.Button_Ok.Location = new System.Drawing.Point(160, 190);
-            this.Button_Ok.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Button_Ok.Margin = new System.Windows.Forms.Padding(2);
             this.Button_Ok.Name = "Button_Ok";
             this.Button_Ok.Size = new System.Drawing.Size(75, 23);
             this.Button_Ok.TabIndex = 3;
