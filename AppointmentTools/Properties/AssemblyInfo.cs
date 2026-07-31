@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Outlook add-in for checking drive time and policy compliance to appointment locations.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zachary ZumMallen")]
-[assembly: AssemblyProduct("Appointment Tools")]
+[assembly: AssemblyProduct("AppointmentTools")]
 [assembly: AssemblyCopyright("Copyright © 2026 Zachary ZumMallen")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

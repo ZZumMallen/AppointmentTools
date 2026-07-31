@@ -25,7 +25,7 @@
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>AppointmentTools</RootNamespace>
-    <AssemblyName>Appointment Tools</AssemblyName>
+    <AssemblyName>AppointmentTools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <ResolveComReferenceSilent>true</ResolveComReferenceSilent>
@@ -34,7 +34,7 @@
     <PublishUrl>C:\Publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>2.0.0.3</ApplicationVersion>
+    <ApplicationVersion>2.0.0.4</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -42,8 +42,8 @@
     <ProductName>AppointmentTools</ProductName>
     <PublisherName>Zachary ZumMallen</PublisherName>
     <SupportUrl>https://github.com/ZZumMallen/AppointmentTools/</SupportUrl>
-    <FriendlyName>AppointmentTools</FriendlyName>
-    <OfficeApplicationDescription />
+    <FriendlyName>Appointment Tools</FriendlyName>
+    <OfficeApplicationDescription>Outlook ribbon add-in to assist with scheduling appointments.</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
